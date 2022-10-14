@@ -1,0 +1,87 @@
+﻿@model MedicalApplication.Data.Model.Domain.User
+
+@{
+    ViewBag.Title = "GetUser";
+}
+
+<style>
+    .stylecontainer {
+        margin: 2%;
+        margin-top: 5%;
+    }
+</style>
+
+<h2 class="stylecontainer">User</h2>
+
+<div class="stylecontainer">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UForename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UForename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UDOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UDOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPostcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPostcode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+
+</p>
+
+<p>
+    <h2 class="stylecontainer"> Appointments for @Model.UForename's Account</h2>
+</p>
+@if (Model.Appointments.Count != 0)
+{
+    @Html.Partial("~/Views/User/GetAppointments.cshtml", Model.Appointments);
+}
+else
+{
+    <br />
+    <br />
+
+    <div class="stylecontainer"> There are currently no Appointments registered for this user @Html.ActionLink("Book an Appointment Here", "AddAppointment", "Appointment")</div>
+}
+

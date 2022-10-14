@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MedicalApplication.Data.Model.Domain.Appointment>
+
+@{
+    ViewBag.Title = "GetAppointments";
+}
+
+<style>
+    .stylecontainer {
+        margin: 2%;
+        margin-top: 5%;
+    }
+</style>
+
+<h2 class="stylecontainer">Appointments</h2>
+
+<p class="stylecontainer">
+    @Html.ActionLink("Book a New Appointment", "AddAppointment")
+</p>
+<table class="table stylecontainer">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentReason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoctorsNotes)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppointmentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppointmentTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppointmentReason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppointmentStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoctorsNotes)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.AppointmentID }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Cancel", "DeleteAppointment", new { appointmentId = item.AppointmentID, Controller = "Appointment" }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

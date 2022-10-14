@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MedicalApplication.Data.Model.Domain.Doctor>
+
+@{
+    ViewBag.Title = "GetDoctors";
+}
+
+<style>
+    .stylecontainer {
+        margin: 2%;
+        margin-top: 5%;
+    }
+</style>
+
+<h2 class="stylecontainer">Doctors</h2>
+
+<p class="stylecontainer">
+    @Html.ActionLink("Add Doctor", "AddDoctor")
+</p>
+<table class="table stylecontainer">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DoctorName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.DoctorName)*@
+            @Html.ActionLink(item.DoctorName, "GetDoctor", new { id = item.DoctorID, Controller = "Doctor" })
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditDoctor", new { id = item.DoctorID }, new { @class = "btn btn-success" }) |           
+            @Html.ActionLink("Delete", "DeleteDoctor", new { doctorId = item.DoctorID, Controller = "Doctor" }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,40 @@
+﻿@model MedicalApplication.Data.Model.Domain.Doctor
+
+@{
+    ViewBag.Title = "GetDoctor";
+}
+
+<style>
+    .stylecontainer {
+        margin: 2%;
+        margin-top: 5%;
+    }
+</style>
+
+<h2 class="stylecontainer">Doctor</h2>
+
+<div class="stylecontainer">
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DoctorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoctorName)
+        </dd>
+
+    </dl>
+</div>
+<p class="stylecontainer">
+    @Html.ActionLink("Back to Doctors", "GetDoctors", "Doctor")
+</p>
+
+<p class="stylecontainer">
+    <h2 class="stylecontainer"> Appointments for @Model.DoctorName</h2>
+</p>
+@if (Model.Appointments.Count != 0)
+{
+    @Html.Partial("~/Views/Doctor/GetAppointments.cshtml", Model.Appointments);
+}

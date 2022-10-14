@@ -1,0 +1,47 @@
+﻿@model MedicalApplication.Data.Model.Domain.Expertise
+
+@{
+    ViewBag.Title = "DeleteExpertise";
+}
+
+<style>
+    .stylecontainer {
+        margin: 2%;
+        margin-top: 5%;
+    }
+</style>
+
+<h2 class="stylecontainer">Delete Expertise</h2>
+
+<h3 class="stylecontainer">Are you sure you want to delete this?</h3>
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal stylecontainer">
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpertiseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpertiseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpertiseDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpertiseDescription)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color stylecontainer">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to Expertise", "GetExpertises")
+        </div>
+    }
+</div>

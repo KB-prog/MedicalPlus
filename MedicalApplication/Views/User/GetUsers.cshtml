@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MedicalApplication.Data.Model.Domain.User>
+
+@{
+    ViewBag.Title = "GetUsers";
+}
+
+<style>
+    .stylecontainer {
+        margin: 2%;
+        margin-top: 5%;
+    }
+</style>
+
+<h2 class="stylecontainer">Users</h2>
+
+<p class="stylecontainer">
+    @Html.ActionLink("Add New User", "AddUser")
+</p>
+<table class="table stylecontainer">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UForename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UDOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UPostcode)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UForename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.USurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UDOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UPostcode)
+            </td>
+            <td>
+                @*@Html.ActionLink("User Appointments", "GetAppointments", "Appointments") |*@
+                @Html.ActionLink("User Appointments", "GetUser", new { id = item.UserID }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+    }
+
+</table>
